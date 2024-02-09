@@ -25,17 +25,7 @@ class TodoListViewController: UITableViewController {
         navigationItem.scrollEdgeAppearance = appearance
         // Do any additional setup after loading the view.
         
-      
-        
-        
-        
-//        if let items = defaults.array(forKey: "TodoListArray") as? [Item]{
-//            itemArray = items
-//        }
-        
-        let newItem = Item()
-        newItem.title = "Find Mike"
-        itemArray.append(newItem)
+        loadItems()
     }
     
     //MARK: Tableview Datasoruce Methods
@@ -110,6 +100,18 @@ class TodoListViewController: UITableViewController {
         }
         
         self.tableView.reloadData()
+    }
+    
+    func loadItems(){
+        if let data = try? Data(contentsOf: dataFilePath!){
+            let decoder = PropertyListDecoder()
+            do {
+                itemArray = try decoder.decode([Item].self, from: data)
+            } catch{
+                print("Error decoding item array, \(error)")
+            }
+           
+        }
     }
 }
 
