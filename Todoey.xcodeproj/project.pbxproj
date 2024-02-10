@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4588BBF2B775CE400A72F91 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4588BBD2B775CE400A72F91 /* DataModel.xcdatamodeld */; };
 		C4AAA01D2B6E8F20001971A3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AAA01C2B6E8F20001971A3 /* Item.swift */; };
 		EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4F9239524DB00FB933B /* AppDelegate.swift */; };
 		EB2BE4FE239524DB00FB933B /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4FD239524DB00FB933B /* TodoListViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4588BBE2B775CE400A72F91 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		C4AAA01C2B6E8F20001971A3 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Item.swift; path = Todoey/Item.swift; sourceTree = SOURCE_ROOT; };
 		EB2BE4F6239524DB00FB933B /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2BE4F9239524DB00FB933B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 		C4AAA01B2B6E8EC5001971A3 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				C4588BBD2B775CE400A72F91 /* DataModel.xcdatamodeld */,
 				C4AAA01C2B6E8F20001971A3 /* Item.swift */,
 			);
 			name = "Data Model";
@@ -172,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB2BE4FE239524DB00FB933B /* TodoListViewController.swift in Sources */,
+				C4588BBF2B775CE400A72F91 /* DataModel.xcdatamodeld in Sources */,
 				C4AAA01D2B6E8F20001971A3 /* Item.swift in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,
 			);
@@ -375,6 +379,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C4588BBD2B775CE400A72F91 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C4588BBE2B775CE400A72F91 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = C4588BBE2B775CE400A72F91 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EB2BE4EE239524DB00FB933B /* Project object */;
 }
