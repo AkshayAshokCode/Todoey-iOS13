@@ -27,6 +27,7 @@ class TodoListViewController: UITableViewController {
         navigationItem.scrollEdgeAppearance = appearance
         // Do any additional setup after loading the view.
         
+    
         
         loadItems()
     }
@@ -95,9 +96,6 @@ class TodoListViewController: UITableViewController {
     
     
     func saveItems(){
-        
-    
-        
         do{
             try context.save()
         }catch{
@@ -115,5 +113,18 @@ class TodoListViewController: UITableViewController {
            print("Error fetching data from context \(error)")
         }
     }
+    
+ 
 }
 
+//MARK: - Search bar methods
+
+extension TodoListViewController: UISearchBarDelegate{
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        
+    
+    }
+    
+}
