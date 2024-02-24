@@ -31,6 +31,10 @@ class CategoryViewController: UITableViewController {
     
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let numCat = categories?.count
+        if numCat == 0 {
+            return 1
+        }
         return categories?.count ?? 1
     }
     
@@ -38,7 +42,12 @@ class CategoryViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         
-        cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories added yet"
+        if categories?.count == 0{
+            cell.textLabel?.text = "No Categories added yet"
+        }else{
+            cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories added yet"
+        }
+       
         
         return cell
     }
@@ -46,16 +55,21 @@ class CategoryViewController: UITableViewController {
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print(itemArray[indexPath.row])
-        
-    performSegue(withIdentifier: "goToItems", sender: self)
+        if categories?.count != 0 {
+            performSegue(withIdentifier: "goToItems", sender: self)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! TodoListViewController
-        
-        if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedCategory = categories?[indexPath.row]
+        if categories?.count != 0 {
+            let destinationVC = segue.destination as! TodoListViewController
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.selectedCategory = categories?[indexPath.row]
+            }
         }
+       
     }
     
     //MARK: - TableView Manipulation Methods
@@ -89,8 +103,10 @@ class CategoryViewController: UITableViewController {
            
             let newItem = Category()
             newItem.name = textField.text!
-            
-            self.save(category: newItem)
+            if !textField.text!.isEmpty {
+                self.save(category: newItem)
+            }
+           
         }
         alert.addAction(action)
         
