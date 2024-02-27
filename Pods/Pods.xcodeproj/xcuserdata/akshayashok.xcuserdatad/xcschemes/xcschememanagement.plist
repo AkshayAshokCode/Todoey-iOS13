@@ -5,18 +5,26 @@
 	<key>SchemeUserState</key>
 	<dict>
 		<key>ChameleonFramework.xcscheme</key>
+<<<<<<< Updated upstream
+=======
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>Pods-Todoey.xcscheme</key>
+>>>>>>> Stashed changes
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Pods-Todoey.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>SwipeCellKit.xcscheme</key>
 		<dict>
