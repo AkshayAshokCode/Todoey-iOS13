@@ -22,16 +22,38 @@ class TodoListViewController: SwipeTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = UIColor.systemBlue
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationItem.standardAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
-        // Do any additional setup after loading the view.
-        
         tableView.separatorStyle = .none
-        // loadItems()
+       
+    }
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let colourHex = selectedCategory?.colour{
+            guard let navBar = navigationController?.navigationBar else {fatalError("Navigation controller not set")}
+            let backgroundColor = UIColor(hexString: colourHex)
+            navBar.backgroundColor = backgroundColor
+            searchBar.barTintColor = backgroundColor
+            searchBar.searchTextField.backgroundColor = FlatWhite()
+            title = selectedCategory!.name
+            navBar.barTintColor = backgroundColor
+            
+            let contrastOfBackgroundColor = ContrastColorOf(backgroundColor!, returnFlat: true)
+            
+            
+            navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: contrastOfBackgroundColor]
+            navBar.backgroundColor = backgroundColor
+            
+            navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: contrastOfBackgroundColor]
+                    
+            // Color the back button and icons: (both small and large title)
+            navBar.tintColor = contrastOfBackgroundColor
+            
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithTransparentBackground()
+            appearance.backgroundColor = backgroundColor
+            navigationItem.scrollEdgeAppearance = appearance
+        }
     }
     
     //MARK: Tableview Datasoruce Methods
