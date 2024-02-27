@@ -18,18 +18,20 @@ class CategoryViewController: SwipeTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = UIColor.systemBlue
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationItem.standardAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
 
         loadCategories()
         
         tableView.separatorStyle = .none
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        guard let navBar = navigationController?.navigationBar else {fatalError("Navigation controller not set")}
+        navBar.backgroundColor = UIColor(hexString:"1D9BF6")
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = UIColor(hexString:"1D9BF6")
+        navigationItem.scrollEdgeAppearance = appearance
+    }
    
     
     //MARK: - TableView Datasource Methods
@@ -49,7 +51,9 @@ class CategoryViewController: SwipeTableViewController {
             cell.textLabel?.text = "No Categories added yet"
         }else{
             cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories added yet"
-            cell.backgroundColor = UIColor(hexString: categories?[indexPath.row].colour ?? "1D9BF6")
+            guard let cellBackgroundColor = UIColor(hexString: categories?[indexPath.row].colour ?? "1D9BF6") else {fatalError()}
+            cell.backgroundColor = cellBackgroundColor
+            cell.textLabel?.textColor = ContrastColorOf(cellBackgroundColor, returnFlat: true)
         }
         
         return cell
